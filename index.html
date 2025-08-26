@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Uma declaração pra você ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #2b0f3a;
+      --card: rgba(255,255,255,0.04);
+      --accent: #ff6b81;
+      --accent2: #ffb86b;
+      --glass: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.95);
+      --muted: rgba(255,255,255,0.75);
+    }
+
+    /* Safe area for iPhone notch */
+    html,body{
+      height:100%;
+      margin:0;
+      padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: linear-gradient(160deg,var(--bg1), var(--bg2));
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    /* Center layout */
+    .wrap{
+      min-height:100dvh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      box-sizing:border-box;
+    }
+
+    /* Card */
+    .card{
+      width:100%;
+      max-width:720px;
+      border-radius:20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* top hearts */
+    .hearts {
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+    .heart {
+      position:absolute;
+      width:18px;
+      height:18px;
+      transform:translate(-50%,-50%) scale(0.9);
+      opacity:0.12;
+      filter: blur(0.4px);
+      animation: floatUp 6s linear infinite;
+    }
+    .heart path { fill: var(--accent); }
+
+    @keyframes floatUp {
+      0%{ transform: translate(-50%,-50%) translateY(40px) scale(0.8); opacity:0;}
+      20%{ opacity:0.6; }
+      100%{ transform: translate(-50%,-50%) translateY(-140px) scale(1.1); opacity:0;}
+    }
+
+    /* Title */
+    h1{
+      margin:0 0 8px 0;
+      font-family: "Dancing Script", "Poppins", cursive;
+      font-size: clamp(28px, 5vw, 44px);
+      letter-spacing: -0.5px;
+      color:var(--accent2);
+      text-shadow: 0 6px 18px rgba(255,107,129,0.12);
+    }
+
+    p.lead{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size: clamp(14px, 2.2vw, 16px);
+    }
+
+    .photo-row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin:10px 0 18px 0;
+    }
+
+    .avatar {
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      background:linear-gradient(180deg,var(--accent), var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      flex-shrink:0;
+      overflow:hidden;
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* message box */
+    .message {
+      background: var(--card);
+      padding:16px;
+      border-radius:12px;
+      font-size: clamp(16px, 2.6vw, 18px);
+      line-height:1.45;
+      color:var(--text);
+      min-height:88px;
+      position:relative;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    /* typed text cursor */
+    .typing {
+      display:inline-block;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .cursor {
+      display:inline-block;
+      width:2px;
+      height:1.1em;
+      background:var(--accent);
+      margin-left:6px;
+      vertical-align:middle;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity:0 } }
+
+    /* reveal button */
+    .controls{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .btn {
+      background: linear-gradient(90deg,var(--accent),var(--accent2));
+      color:white;
+      border:0;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:15px;
+      box-shadow: 0 8px 30px rgba(203, 85, 97, 0.16);
+      transition: transform .14s ease, box-shadow .14s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{ transform: translateY(1px) scale(0.998); }
+
+    .btn.secondary{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:none;
+    }
+
+    /* footer small */
+    .small{
+      margin-top:14px;
+      color:rgba(255,255,255,0.5);
+      font-size:13px;
+    }
+
+    /* Make layout narrower on phones */
+    @media (max-width:420px){
+      .card{ padding:18px; border-radius:16px; }
+      .avatar{ width:60px; height:60px; border-radius:12px; }
+      .controls{ gap:8px; }
+      .btn{ padding:11px 14px; font-size:14px; border-radius:11px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <div class="hearts" aria-hidden="true">
+        <!-- decorative hearts at different positions -->
+        <svg class="heart" style="left:12%; top:70%; animation-delay:0s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
+        <svg class="heart" style="left:36%; top:76%; animation-delay:1.2s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
+        <svg class="heart" style="left:78%; top:84%; animation-delay:2.4s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
+      </div>
+
+      <header>
+        <h1 id="title">Para você, meu amor</h1>
+        <p class="lead">Uma mini carta digital do seu garoto de programa.</p>
+      </header>
+
+      <section class="photo-row" aria-hidden="false">
+        <div class="avatar" title="Sua foto (opcional)">
+          <!-- Troque o conteúdo abaixo por <img src="link-da-foto.jpg"> se quiser -->
+          <img src="https://i.pinimg.com/736x/73/de/87/73de870780cfae8822f4e36f5dc9dad3.jpg" width="40%" alt="Foto (opcional)">
+        </div>
+
+        <div style="flex:1; min-width:0;">
+          <div style="font-weight:600; font-size:15px;">alemoa...</div>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">amo mt vc.</div>
+        </div>
+      </section>
+
+      <article class="message" aria-live="polite" id="messageBox">
+        <span class="typing" id="typed">
+          <!-- Texto inicial curto para SEO / acessibilidade. O resto aparece pela digitação. -->
+          Olá, meu amor...
+        </span>
+        <span class="cursor" id="cursor" aria-hidden="true"></span>
+      </article>
+
+      <div class="controls">
+        <button class="btn" id="revealBtn" aria-controls="messageBox">Ler declaração</button>
+        <button class="btn secondary" id="resetBtn">Reiniciar</button>
+        <div class="small" style="margin-left:auto">Feito com ❤ — do seu garoto de programa</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ======= CONFIGURE AQUI A SUA DECLARAÇÃO =======
+    // Mantenha quebras com \n para novas linhas.
+    const declaration = [
+`desde a primeira vez que te beijei senti q vc era especial.`,
+`é até seurreal como é facil te amar`,
+`amo cada detalhe seu`,
+`seu sorriso, seu cabelo`,
+`seus olhos, seu corpo`,
+`e o seu jeito boboca de ser (iNgual eu)`,
+
+`Obrigado por ser quem você é. e estar comigo, Te amo
+-ema ❤️`
+];
+
+    // =================================================
+
+    const typedEl = document.getElementById('typed');
+    const cursorEl = document.getElementById('cursor');
+    const btn = document.getElementById('revealBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    let fullText = declaration.join('\n\n'); // texto final
+    let idx = 0;
+    let charDelay = 28; // velocidade da digitação (ms)
+    let running = false;
+    let typingTimeout = null;
+
+    function setTypedText(text) {
+      typedEl.textContent = text;
+    }
+
+    function typeNext() {
+      if (idx >= fullText.length) {
+        cursorEl.style.opacity = '0';
+        running = false;
+        return;
+      }
+      running = true;
+      // adiciona caractere
+      const nextChar = fullText[idx];
+      typedEl.textContent += nextChar;
+      idx++;
+      // pausa maior em quebras de linha
+      let delay = charDelay;
+      if (nextChar === '\n') delay = charDelay * 8;
+      typingTimeout = setTimeout(typeNext, delay);
+    }
+
+    function startTyping() {
+      if (running) return;
+      // limpa e inicia
+      setTypedText('');
+      idx = 0;
+      cursorEl.style.opacity = '1';
+      typeNext();
+    }
+
+    function reset() {
+      clearTimeout(typingTimeout);
+      running = false;
+      setTypedText('Olá, meu amor...');
+      cursorEl.style.opacity = '1';
+      idx = 0;
+    }
+
+    // Accessibility: keyboard trigger
+    btn.addEventListener('click', startTyping);
+    resetBtn.addEventListener('click', reset);
+
+    // Start small animation on load after tiny delay
+    window.addEventListener('load', () => {
+      // show little intro, then ready
+      setTimeout(()=> {
+        // keep intro short
+        setTypedText('Olá, meu amor...');
+      }, 240);
+    });
+
+    // allow space or enter to activate (for keyboard users)
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        // don't interfere with form inputs
+        if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+        e.preventDefault();
+        startTyping();
+      }
+      if (e.key === 'r' || e.key === 'R') reset();
+    });
+
+    // small friendly tap animation for the heart decoration
+    // make hearts slightly vary their animation-duration (already styled)
+    document.querySelectorAll('.heart').forEach((h,i) => {
+      // staggered transforms
+      const d = 6 + (i*1.2);
+      h.style.animationDuration = d + 's';
+    });
+  </script>
+</body>
+</html>
