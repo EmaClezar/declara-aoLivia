@@ -20,7 +20,6 @@
       --muted: rgba(255,255,255,0.75);
     }
 
-    /* Safe area for iPhone notch */
     html,body{
       height:100%;
       margin:0;
@@ -33,7 +32,6 @@
       overflow-x:hidden;
     }
 
-    /* Center layout */
     .wrap{
       min-height:100dvh;
       display:flex;
@@ -43,7 +41,6 @@
       box-sizing:border-box;
     }
 
-    /* Card */
     .card{
       width:100%;
       max-width:720px;
@@ -57,7 +54,6 @@
       -webkit-backdrop-filter: blur(6px);
     }
 
-    /* top hearts */
     .hearts {
       position:absolute;
       inset:0;
@@ -80,7 +76,6 @@
       100%{ transform: translate(-50%,-50%) translateY(-140px) scale(1.1); opacity:0;}
     }
 
-    /* Title */
     h1{
       margin:0 0 8px 0;
       font-family: "Dancing Script", "Poppins", cursive;
@@ -125,7 +120,6 @@
       display:block;
     }
 
-    /* message box */
     .message {
       background: var(--card);
       padding:16px;
@@ -138,7 +132,6 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
     }
 
-    /* typed text cursor */
     .typing {
       display:inline-block;
       white-space:pre-wrap;
@@ -155,7 +148,6 @@
     }
     @keyframes blink { 50% { opacity:0 } }
 
-    /* reveal button */
     .controls{
       display:flex;
       gap:12px;
@@ -186,14 +178,12 @@
       box-shadow:none;
     }
 
-    /* footer small */
     .small{
       margin-top:14px;
       color:rgba(255,255,255,0.5);
       font-size:13px;
     }
 
-    /* Make layout narrower on phones */
     @media (max-width:420px){
       .card{ padding:18px; border-radius:16px; }
       .avatar{ width:60px; height:60px; border-radius:12px; }
@@ -207,7 +197,6 @@
   <div class="wrap">
     <div class="card" role="main" aria-labelledby="title">
       <div class="hearts" aria-hidden="true">
-        <!-- decorative hearts at different positions -->
         <svg class="heart" style="left:12%; top:70%; animation-delay:0s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
         <svg class="heart" style="left:36%; top:76%; animation-delay:1.2s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
         <svg class="heart" style="left:78%; top:84%; animation-delay:2.4s;" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-7.17C-0.5 9.6 4.5 4 8.5 6.5 10 7.8 12 10 12 10s2-2.2 3.5-3.5C19.5 4 24.5 9.6 21.5 13.83 19 16.65 12 21 12 21z"/></svg>
@@ -220,10 +209,8 @@
 
       <section class="photo-row" aria-hidden="false">
         <div class="avatar" title="Sua foto (opcional)">
-          <!-- Troque o conteúdo abaixo por <img src="link-da-foto.jpg"> se quiser -->
-          <img src="https://i.pinimg.com/736x/73/de/87/73de870780cfae8822f4e36f5dc9dad3.jpg" width="40%" alt="Foto (opcional)">
+          <img src="https://i.pinimg.com/736x/73/de/87/73de870780cfae8822f4e36f5dc9dad3.jpg" alt="Foto (opcional)">
         </div>
-
         <div style="flex:1; min-width:0;">
           <div style="font-weight:600; font-size:15px;">alemoa...</div>
           <div style="color:var(--muted); font-size:13px; margin-top:4px;">amo mt vc.</div>
@@ -231,10 +218,7 @@
       </section>
 
       <article class="message" aria-live="polite" id="messageBox">
-        <span class="typing" id="typed">
-          <!-- Texto inicial curto para SEO / acessibilidade. O resto aparece pela digitação. -->
-          Olá, meu amor...
-        </span>
+        <span class="typing" id="typed">Olá, meu amor...</span>
         <span class="cursor" id="cursor" aria-hidden="true"></span>
       </article>
 
@@ -243,47 +227,41 @@
         <button class="btn secondary" id="resetBtn">Reiniciar</button>
         <div class="small" style="margin-left:auto">Feito com ❤ — do seu garoto de programa</div>
       </div>
-
     </div>
   </div>
 
   <script>
-    // ======= CONFIGURE AQUI A SUA DECLARAÇÃO =======
-    // Mantenha quebras com \n para novas linhas.
     const declaration = [
-`desde a primeira vez que te beijei senti q vc era especial.`,
-`é até seurreal como é facil te amar`,
-`amo cada detalhe seu`,
-`seu sorriso, seu cabelo`,
-`seus olhos, seu corpo`,
-`e o seu jeito boboca de ser (iNgual eu)`,
+`Desde a primeira vez que te beijei, senti que você era especial.`,
+`É até surreal como é fácil te amar.`,
+`Amo cada detalhe seu:`,
+`Seu sorriso, seu cabelo,`,
+`Seus olhos, seu corpo,`,
+`E o seu jeito boboca de ser (igual eu).`,
 
-`Obrigado por ser quem você é. e estar comigo, Te amo
--ema ❤️`
+`Obrigado por ser quem você é e por estar comigo. Te amo.
+-ema ❤️`,
 
-`desculpa eu descofiar de algumo coisa de voce, tu é a melhor coisa que me aconteceu esse ano`
-`eu tento ser a melhor pessoa para vc mas querendo ou n eu ainda tenho uns probleminhas`
-`em tlvzz quase um ano essa é a primeira vez que te vejo triste por minha causa e eu nao sei como demostrar mas isso me corta o coraçao`
-`tu é meu conforto e me sinto mt mal de te deixar triste e nao sei como fazer isso passar`
-`prometo nunca mais fazer isso (promessa de vdd, n igual quando eu falo que vou parar de fumar)`
-`eu to morrendo de sdd e so de pensae que tu n vai me ver me da um nervoso`
-`eu nao sou mt bom pra falar entao pensei nesse jeitinho meio inusitado de te pedir dclp`
-`e falar o quanto tu é importante pra mim`
-`eu te amo mt e quero voltara ppoder conversar contigo normal`
-`pois uma das coisas que fez eu me apaixonar por vc foi quere smp conversar`
-`eu te amo mt e smp vou confiar em vc`
+`Desculpa eu desconfiar de alguma coisa de você, tu é a melhor coisa que me aconteceu esse ano.`,
+`Eu tento ser a melhor pessoa para você, mas querendo ou não eu ainda tenho uns probleminhas.`,
+`Em talvez quase um ano essa é a primeira vez que te vejo triste por minha causa e eu não sei como demonstrar, mas isso me corta o coração.`,
+`Tu é meu conforto e me sinto muito mal de te deixar triste e não sei como fazer isso passar.`,
+`Prometo nunca mais fazer isso (promessa de verdade, não igual quando eu falo que vou parar de fumar).`,
+`Eu tô morrendo de saudade e só de pensar que tu não vai me ver me dá um nervoso.`,
+`Eu não sou muito bom pra falar, então pensei nesse jeitinho meio inusitado de te pedir desculpa e falar o quanto tu é importante pra mim.`,
+`Eu te amo muito e quero voltar a poder conversar contigo normal.`,
+`Pois uma das coisas que fez eu me apaixonar por você foi querer sempre conversar.`,
+`Eu te amo muito e sempre vou confiar em você.`
 ];
-
-    // =================================================
 
     const typedEl = document.getElementById('typed');
     const cursorEl = document.getElementById('cursor');
     const btn = document.getElementById('revealBtn');
     const resetBtn = document.getElementById('resetBtn');
 
-    let fullText = declaration.join('\n\n'); // texto final
+    let fullText = "";
     let idx = 0;
-    let charDelay = 28; // velocidade da digitação (ms)
+    let charDelay = 28;
     let running = false;
     let typingTimeout = null;
 
@@ -298,11 +276,9 @@
         return;
       }
       running = true;
-      // adiciona caractere
       const nextChar = fullText[idx];
       typedEl.textContent += nextChar;
       idx++;
-      // pausa maior em quebras de linha
       let delay = charDelay;
       if (nextChar === '\n') delay = charDelay * 8;
       typingTimeout = setTimeout(typeNext, delay);
@@ -310,7 +286,7 @@
 
     function startTyping() {
       if (running) return;
-      // limpa e inicia
+      fullText = declaration.join('\n\n'); // monta texto aqui
       setTypedText('');
       idx = 0;
       cursorEl.style.opacity = '1';
@@ -325,23 +301,17 @@
       idx = 0;
     }
 
-    // Accessibility: keyboard trigger
     btn.addEventListener('click', startTyping);
     resetBtn.addEventListener('click', reset);
 
-    // Start small animation on load after tiny delay
     window.addEventListener('load', () => {
-      // show little intro, then ready
       setTimeout(()=> {
-        // keep intro short
         setTypedText('Olá, meu amor...');
       }, 240);
     });
 
-    // allow space or enter to activate (for keyboard users)
     document.addEventListener('keydown', (e) => {
       if (e.code === 'Space' || e.code === 'Enter') {
-        // don't interfere with form inputs
         if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
         e.preventDefault();
         startTyping();
@@ -349,10 +319,7 @@
       if (e.key === 'r' || e.key === 'R') reset();
     });
 
-    // small friendly tap animation for the heart decoration
-    // make hearts slightly vary their animation-duration (already styled)
     document.querySelectorAll('.heart').forEach((h,i) => {
-      // staggered transforms
       const d = 6 + (i*1.2);
       h.style.animationDuration = d + 's';
     });
